@@ -1,0 +1,6 @@
+my_first_project
+todo_project/todo_app/static
+**/migrations
+.vscode
+**/__pycache__
+**/*.sqlite3

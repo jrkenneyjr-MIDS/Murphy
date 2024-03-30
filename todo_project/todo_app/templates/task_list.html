@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>To-Do List</h1>
+  <ul>
+    {% for task in tasks %}
+      <li>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="checkbox" name="completed" value="true" onchange="this.form.submit()" 
+          {% if task.completed %}checked{% endif %}>
+          <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+          ({{ task.completed|yesno:"Completed,Incomplete" }})
+        </form>
+      </li>
+    {% empty %}
+      <li>No tasks yet.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'task_create' %}">Create New Task</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ task.title }}</h1>
+  <p>{{ task.description|linebreaks }}</p>
+  <p>Created: {{ task.created_at }}</p>
+  <p>Status: {{ task.completed|yesno:"Completed,Incomplete" }}</p>
+  <a href="{% url 'task_update' task.pk %}">Edit</a>
+  <a href="{% url 'task_delete' task.pk %}">Delete</a>
+{% endblock %}
